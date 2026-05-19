@@ -1,0 +1,155 @@
+# =========================================================
+# INTERNET FEATURES & USER ENGAGEMENT ANALYSIS - MAY 2026
+# Statistical Dataset Analysis Using Python
+# =========================================================
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# =========================================================
+# DATASET CREATION
+# =========================================================
+
+data = {
+    "Question": [
+        "Most Used Social Media Features",
+        "Short-form Video Influence",
+        "AI Search Preference",
+        "Messaging App Features",
+        "Live Streaming Retention",
+        "Teenager Internet Features",
+        "AI Assistant Tools",
+        "Voice vs Text Search",
+        "Recommendation Algorithms",
+        "E-commerce Features",
+        "Personalized Content Feeds",
+        "Online Collaboration Tools",
+        "Gaming Social Features",
+        "Digital Payment Features",
+        "AI-generated Content Tools",
+        "Video Platform Watch Time",
+        "Disappearing Content Features",
+        "Cybersecurity Features",
+        "VR and AR Features",
+        "Browser Productivity Features",
+        "Online Education Features",
+        "AI Chatbots Customer Service",
+        "Streaming Retention Features",
+        "Cloud Storage Usage",
+        "Online Shopping Growth Features",
+        "Personalization Satisfaction",
+        "Productivity App Features",
+        "Mobile vs Desktop Usage",
+        "Online Community Features",
+        "AI-generated Recommendations"
+    ],
+
+    "Engagement_Score": [
+        95, 93, 85, 88, 82,
+        91, 90, 78, 92, 89,
+        94, 84, 87, 86, 88,
+        90, 83, 80, 76, 79,
+        85, 91, 88, 84, 90,
+        87, 89, 93, 86, 88
+    ],
+
+    "User_Percentage": [
+        96, 94, 52, 89, 80,
+        92, 90, 38, 95, 88,
+        97, 82, 85, 87, 89,
+        91, 84, 81, 74, 78,
+        86, 92, 90, 83, 91,
+        88, 89, 95, 84, 87
+    ]
+}
+
+df = pd.DataFrame(data)
+
+# =========================================================
+# DISPLAY DATASET
+# =========================================================
+
+print("\n================ DATASET PREVIEW ================\n")
+print(df.head())
+
+# =========================================================
+# BASIC STATISTICAL ANALYSIS
+# =========================================================
+
+print("\n================ STATISTICAL SUMMARY ================\n")
+print(df.describe())
+
+# =========================================================
+# BAR CHART
+# =========================================================
+
+plt.figure(figsize=(14, 8))
+plt.bar(df["Question"], df["Engagement_Score"])
+
+plt.xticks(rotation=90)
+plt.xlabel("Internet Features")
+plt.ylabel("Engagement Score")
+plt.title("Internet Feature Engagement Analysis - May 2026")
+
+plt.tight_layout()
+plt.show()
+
+# =========================================================
+# PIE CHART
+# =========================================================
+
+top_features = df.head(5)
+
+plt.figure(figsize=(8, 8))
+plt.pie(
+    top_features["User_Percentage"],
+    labels=top_features["Question"],
+    autopct='%1.1f%%'
+)
+
+plt.title("Top 5 Internet Feature Usage Share")
+plt.show()
+
+# =========================================================
+# LINE CHART
+# =========================================================
+
+plt.figure(figsize=(14, 6))
+plt.plot(
+    df["Question"],
+    df["User_Percentage"],
+    marker='o'
+)
+
+plt.xticks(rotation=90)
+plt.xlabel("Internet Features")
+plt.ylabel("User Percentage")
+plt.title("User Percentage Trends Across Internet Features")
+
+plt.tight_layout()
+plt.show()
+
+# =========================================================
+# TOP 10 MOST ENGAGED FEATURES
+# =========================================================
+
+top10 = df.sort_values(
+    by="Engagement_Score",
+    ascending=False
+).head(10)
+
+print("\n================ TOP 10 ENGAGED FEATURES ================\n")
+print(top10)
+
+# =========================================================
+# SAVE DATASET TO CSV
+# =========================================================
+
+df.to_csv("internet_features_analysis_may_2026.csv", index=False)
+
+print("\nDataset saved successfully as:")
+print("internet_features_analysis_may_2026.csv")
+
+# =========================================================
+# END OF PROJECT
+# =========================================================
